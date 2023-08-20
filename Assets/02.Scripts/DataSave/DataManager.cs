@@ -46,8 +46,8 @@ public class DataManager : MonoBehaviour
             gameData = JsonUtility.FromJson<GameData>(FromJsonData);
 
             //데이터 적용
-            if (gameData.jellyColoring == Coloring.Black) gameData.jellyColoring = Coloring.Red;
-            if (gameData.mainColoring == Coloring.Black) gameData.mainColoring = Coloring.Red;
+            //if (gameData.jellyColoring == Coloring.Black) gameData.jellyColoring = Coloring.Red;
+            //if (gameData.mainColoring == Coloring.Black) gameData.mainColoring = Coloring.Red;
             if (gameData.sceneIndex != SceneManager.GetActiveScene().buildIndex) return;
 
             JellyShooter _js = FindObjectOfType<JellyShooter>();
@@ -112,7 +112,7 @@ public class DataManager : MonoBehaviour
 
         // 이미 저장된 파일이 있다면 덮어쓰고, 없다면 새로 만들어서 저장
         File.WriteAllText(filePath, ToJsonData);
-        Debug.Log("save: "+filePath);
+        Debug.Log("save: " + filePath);
     }
 
     public void ResetJson()
@@ -136,7 +136,7 @@ public class DataManager : MonoBehaviour
 
         // 클래스를 Json 형식으로 전환
         string ToJsonData = JsonUtility.ToJson(gameData, true);
-        string filePath = Application.persistentDataPath + "/" + GameDataFileName;
+        string filePath = Application.dataPath + "/" + GameDataFileName;
 
 
         // 이미 저장된 파일이 있다면 덮어쓰고, 없다면 새로 만들어서 저장

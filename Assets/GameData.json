@@ -2,34 +2,277 @@
     "sceneIndex": 2,
     "deathCount": 0,
     "respawnPoint": {
-        "x": 71.75438690185547,
-        "y": -12.331167221069336
+        "x": 2.0,
+        "y": 0.0
     },
-    "jellyColoring": 1,
+    "jellyColoring": 3,
     "mainColoring": 1,
+    "coloredObjects": [
+        {
+            "instanceID": 326842
+        },
+        {
+            "instanceID": 326898
+        },
+        {
+            "instanceID": 327100
+        },
+        {
+            "instanceID": 327158
+        },
+        {
+            "instanceID": 327224
+        },
+        {
+            "instanceID": 327532
+        },
+        {
+            "instanceID": 327764
+        },
+        {
+            "instanceID": 327856
+        },
+        {
+            "instanceID": 327876
+        },
+        {
+            "instanceID": 328062
+        },
+        {
+            "instanceID": 328088
+        },
+        {
+            "instanceID": 328190
+        },
+        {
+            "instanceID": 328214
+        },
+        {
+            "instanceID": 328274
+        },
+        {
+            "instanceID": 328296
+        },
+        {
+            "instanceID": 328402
+        },
+        {
+            "instanceID": 328530
+        },
+        {
+            "instanceID": 328640
+        },
+        {
+            "instanceID": 328696
+        },
+        {
+            "instanceID": 328718
+        },
+        {
+            "instanceID": 328764
+        },
+        {
+            "instanceID": 328844
+        },
+        {
+            "instanceID": 328890
+        },
+        {
+            "instanceID": 328928
+        },
+        {
+            "instanceID": 328944
+        },
+        {
+            "instanceID": 329040
+        },
+        {
+            "instanceID": 329060
+        },
+        {
+            "instanceID": 329130
+        },
+        {
+            "instanceID": 329148
+        },
+        {
+            "instanceID": 329172
+        },
+        {
+            "instanceID": 329238
+        },
+        {
+            "instanceID": 329314
+        },
+        {
+            "instanceID": 329338
+        },
+        {
+            "instanceID": 329418
+        },
+        {
+            "instanceID": 329488
+        },
+        {
+            "instanceID": 329558
+        },
+        {
+            "instanceID": 329570
+        },
+        {
+            "instanceID": 329588
+        },
+        {
+            "instanceID": 329622
+        },
+        {
+            "instanceID": 329670
+        },
+        {
+            "instanceID": 329688
+        },
+        {
+            "instanceID": 329726
+        },
+        {
+            "instanceID": 329782
+        },
+        {
+            "instanceID": 329818
+        },
+        {
+            "instanceID": 329832
+        },
+        {
+            "instanceID": 329872
+        },
+        {
+            "instanceID": 329898
+        },
+        {
+            "instanceID": 329964
+        },
+        {
+            "instanceID": 329996
+        },
+        {
+            "instanceID": 330054
+        },
+        {
+            "instanceID": 330188
+        },
+        {
+            "instanceID": 330360
+        },
+        {
+            "instanceID": 330432
+        },
+        {
+            "instanceID": 330470
+        },
+        {
+            "instanceID": 330582
+        },
+        {
+            "instanceID": 330594
+        },
+        {
+            "instanceID": 330616
+        },
+        {
+            "instanceID": 330652
+        },
+        {
+            "instanceID": 330688
+        },
+        {
+            "instanceID": 330728
+        },
+        {
+            "instanceID": 330748
+        },
+        {
+            "instanceID": 330768
+        },
+        {
+            "instanceID": 330832
+        },
+        {
+            "instanceID": 330876
+        },
+        {
+            "instanceID": 330898
+        },
+        {
+            "instanceID": 330924
+        },
+        {
+            "instanceID": 330984
+        },
+        {
+            "instanceID": 331024
+        },
+        {
+            "instanceID": 331038
+        },
+        {
+            "instanceID": 331074
+        },
+        {
+            "instanceID": 331094
+        },
+        {
+            "instanceID": 331126
+        },
+        {
+            "instanceID": 331210
+        },
+        {
+            "instanceID": 331298
+        },
+        {
+            "instanceID": 331378
+        },
+        {
+            "instanceID": 331402
+        },
+        {
+            "instanceID": 331428
+        },
+        {
+            "instanceID": 331446
+        },
+        {
+            "instanceID": 331534
+        },
+        {
+            "instanceID": 331554
+        },
+        {
+            "instanceID": 331584
+        },
+        {
+            "instanceID": 331628
+        },
+        {
+            "instanceID": 331668
+        },
+        {
+            "instanceID": 331708
+        },
+        {
+            "instanceID": 331792
+        },
+        {
+            "instanceID": 331840
+        },
+        {
+            "instanceID": 331892
+        }
+    ],
     "isEyeBallList": [
         false,
-        false,
         true,
-        true,
-        true,
-        false,
-        true,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        true,
-        false,
-        false,
-        false,
-        false,
-        true,
-        false,
-        true,
-        false,
         false,
         false,
         false,
@@ -41,11 +284,6 @@
         true,
         false,
         false,
-        true,
-        false,
-        false,
-        false,
-        true,
         false,
         false,
         false,
@@ -53,11 +291,9 @@
         false,
         false,
         true,
-        true,
-        true,
         false,
-        true,
-        true,
+        false,
+        false,
         false,
         false,
         false,
@@ -65,6 +301,23 @@
         true,
         false,
         true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        true,
+        false,
         false,
         false,
         false,
@@ -73,6 +326,28 @@
         false,
         false,
         false,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        true,
         false,
         false,
         false,

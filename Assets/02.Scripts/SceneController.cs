@@ -30,7 +30,7 @@ public class SceneController : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.F11)) 
         {
-            ResetSavedata();
+            DataManager.instance.ResetJson();
         }
     }
 

@@ -11,5 +11,6 @@ public class GameData
     public Vector2 respawnPoint;
     public Coloring jellyColoring;
     public Coloring mainColoring;
+    public List<ColoredObject> coloredObjects;
     public List<bool> isEyeBallList = new List<bool>();
 }
