@@ -8,6 +8,8 @@ TagManager:
   - Item
   - Jelly
   - Spike
+  - Star
+  - SafeZone
   layers:
   - Default
   - TransparentFX

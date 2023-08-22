@@ -7,17 +7,28 @@ using TMPro;
 public class TextTriggerObject : MonoBehaviour
 {
     public TextMeshProUGUI text;
+    public bool turnTextOn = true;
 
     private void Start()
     {
-        if (text != null) text.gameObject.SetActive(false);
+        if (text != null)
+        {
+            if (turnTextOn) text.gameObject.SetActive(false);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player" && text != null)
         {
-            text.gameObject.SetActive(true);
+            if (turnTextOn)
+            {
+                text.gameObject.SetActive(true);
+            }
+            else
+            {
+                text.gameObject.SetActive(false);
+            }
         }
     }
 }

@@ -5,9 +5,17 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static bool haveFoundTheKing = false;
+
     [SerializeField] private LayerMask platformLayerMask;
 
     public BoxCollider2D groundChecker;
+
+    public delegate void OnStarCollect();
+
+    public OnStarCollect onStarCollect;
+
+    public GameObject kingJellyDeco;
 
     #region GameEndVariable
     private bool isDead;
@@ -17,11 +25,13 @@ public class PlayerController : MonoBehaviour
     #endregion
    
     private Rigidbody2D rigid;
+    private bool _isInSafeZone = false;
 
     #region PlayerMoveVariable
     private float horInput;
     private Vector3 playerScale;
     [SerializeField] private float playerSpeed;
+    [SerializeField] private float safeZonePlayerSpeed;
     private float playerXScale;
     #endregion
 
@@ -43,13 +53,14 @@ public class PlayerController : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         playerXScale = transform.localScale.x;
         isDead = false;
+        UpdateKingJelly();
     }
 
     void Update()
     {        
         isGround = isGrounded();
 
-        if (!isGround) fdt += Time.deltaTime;
+        if (!isGround && !_isInSafeZone) fdt += Time.deltaTime;
         
         CheckGameOver();
       
@@ -76,7 +87,7 @@ public class PlayerController : MonoBehaviour
 
     void PlayerJump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < maxJump)
+        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < maxJump && fdt < .1f && !_isInSafeZone)
         {
             ColorManager.instance.AutoSwitchMainColoring();
             rigid.velocity = Vector2.zero;
@@ -100,7 +111,17 @@ public class PlayerController : MonoBehaviour
             playerScale.x = -playerXScale;
         }
         transform.localScale = playerScale;
-        transform.Translate(Vector2.right * Time.deltaTime * playerSpeed * horInput);
+        float _finalSpeed = playerSpeed;
+        if (_isInSafeZone) _finalSpeed = safeZonePlayerSpeed;
+        transform.Translate(Vector2.right * Time.deltaTime * _finalSpeed * horInput);
+
+        if (_isInSafeZone)
+        {
+            if (horInput == 0)
+            {
+                rigid.velocity = new Vector2(0.0f, rigid.velocity.y);
+            }
+        }
     }
 
     void OnCollisionExit2D(Collision2D collision)
@@ -137,34 +158,92 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Spike"))
         {
             ColoredObject _co = other.gameObject.GetComponent<ColoredObject>();
-            if (_co.isSpikeActive)
+            if (_co.isCollidable)
             {
                 if (isDead == false) StartCoroutine(DeathCoroutine());
             }
         }
 
+        if (other.gameObject.CompareTag("Star"))
+        {
+            if (other.GetComponent<ColoredObject>().isCollidable)
+            {
+                if (other.GetComponent<ColoredObject>() == GetComponent<JellyShooter>().jelliedObject)
+                {
+                    GetComponent<JellyShooter>().RetriveJelly();
+                }
+                other.gameObject.SetActive(false);
+
+                onStarCollect?.Invoke();
+            }
+        }
+
+        if (other.gameObject.CompareTag("SafeZone"))
+        {
+            _isInSafeZone = true;
+        }
+
+    }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Spike"))
+        {
+            ColoredObject _co = other.gameObject.GetComponent<ColoredObject>();
+            if (_co.isCollidable)
+            {
+                if (isDead == false) StartCoroutine(DeathCoroutine());
+            }
+        }
+
+        if (other.gameObject.CompareTag("Star"))
+        {
+            if (other.GetComponent<ColoredObject>().isCollidable)
+            {
+                if (other.GetComponent<ColoredObject>() == GetComponent<JellyShooter>().jelliedObject)
+                {
+                    GetComponent<JellyShooter>().RetriveJelly();
+                }
+                other.gameObject.SetActive(false);
+
+                onStarCollect?.Invoke();
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("SafeZone"))
+        {
+            _isInSafeZone = false;
+        }
     }
 
     bool isGrounded()
     {
         float extraHeightText = 0.2f;
         // RaycastHit2D rayCastHit = Physics2D.Raycast(groundChecker.bounds.center, Vector2.down, groundChecker.bounds.extents.y + extraHeightText, platformLayerMask);
-        RaycastHit2D rayCastHit = Physics2D.BoxCast(groundChecker.bounds.center, groundChecker.bounds.size, 0f, Vector2.down, extraHeightText, platformLayerMask);
-        if (rayCastHit.collider != null && !rayCastHit.collider.isTrigger)
+        RaycastHit2D[] _allHits = Physics2D.BoxCastAll(groundChecker.bounds.center, groundChecker.bounds.size, 0f, Vector2.down, extraHeightText, platformLayerMask);
+        bool _value = false;
+
+        for (int i = 0; i < _allHits.Length; i++)
         {
-            fdt = 0f;
-            jumpCount = 0;
-        }
-        else
-        {
-            if (isJump)
+            if (_allHits[i].collider != null && !_allHits[i].collider.isTrigger)
             {
-                jumpCount++;
-                isJump = false;
+                fdt = 0f;
+                jumpCount = 0;
+                _value = true;
             }
         }
+        
+        if (_value == false && isJump)
+        {
+            jumpCount++;
+            isJump = false;
+        }
+        _value = false;
 
-        return rayCastHit.collider != null;
+        return _value;
     }
 
     void CheckGameOver()
@@ -212,5 +291,10 @@ public class PlayerController : MonoBehaviour
 
         isGameEnd = true;
         UIManager.instance._isGameEnd = true;
+    }
+
+    public void UpdateKingJelly()
+    {
+        kingJellyDeco.SetActive(haveFoundTheKing);
     }
 }

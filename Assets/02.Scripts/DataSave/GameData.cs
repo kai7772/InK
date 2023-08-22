@@ -13,4 +13,5 @@ public class GameData
     public Coloring mainColoring;
     public List<ColoredObject> coloredObjects;
     public List<bool> isEyeBallList = new List<bool>();
+    public bool haveFoundTheKing;
 }

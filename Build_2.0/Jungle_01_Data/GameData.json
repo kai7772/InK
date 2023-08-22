@@ -1,0 +1,13 @@
+{
+    "sceneIndex": 3,
+    "deathCount": 0,
+    "respawnPoint": {
+        "x": 0.0,
+        "y": 10.0
+    },
+    "jellyColoring": 1,
+    "mainColoring": 1,
+    "coloredObjects": [],
+    "isEyeBallList": [],
+    "haveFoundTheKing": false
+}

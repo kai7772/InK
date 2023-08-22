@@ -108,6 +108,7 @@ public class UIManager : MonoBehaviour
 
         plusIngku = true;
         deathCount++;
+        DataManager.instance.IncrementDeathCount();
         string forIngKu = ingKu.text;
         for (int i = 1; i < deathCount; i++)
         {

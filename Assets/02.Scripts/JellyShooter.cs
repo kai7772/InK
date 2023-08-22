@@ -57,7 +57,7 @@ public class JellyShooter : MonoBehaviour
         jellyBullet.gameObject.SetActive(true);
     }
 
-    private void RetriveJelly()
+    public void RetriveJelly()
     {
         if (jelliedObject.isEyeball)
         {

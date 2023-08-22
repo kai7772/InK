@@ -10,7 +10,7 @@ public class ColoredObject : MonoBehaviour, ISerializationCallbackReceiver
     public GameObject eyeballObject;
     public bool startAsEyeball;
     [HideInInspector] public bool isEyeball;
-    [HideInInspector] public bool isSpikeActive;
+    [HideInInspector] public bool isCollidable;
 
     private bool _isJellied = false;
     private List<SpriteRenderer> _eyeballRenderers = new List<SpriteRenderer>();
@@ -114,9 +114,9 @@ public class ColoredObject : MonoBehaviour, ISerializationCallbackReceiver
 
         if (ColorManager.instance.mainColoring != currentColoring) //색 다를 때
         {
-            if (tag == "Spike")
+            if (tag == "Spike" || tag == "Star")
             {
-                isSpikeActive = true;
+                isCollidable = true;
             }
             else if (tag == "Ground")
             {
@@ -135,9 +135,9 @@ public class ColoredObject : MonoBehaviour, ISerializationCallbackReceiver
         }
         else //색 같을때
         {
-            if (tag == "Spike")
+            if (tag == "Spike" || tag == "Star")
             {
-                isSpikeActive = false;
+                isCollidable = false;
             }
             else if (tag == "Ground")
             {

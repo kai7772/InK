@@ -34,17 +34,6 @@ public class SceneController : MonoBehaviour
         }
     }
 
-    void ReloadScene()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-
-    void ResetSavedata()
-    {
-        DataManager.instance.gameData.sceneIndex = -1;
-        DataManager.instance.gameData.deathCount = 0;
-    }
-
     public void NextLevel()
     {
         if (SceneManager.sceneCountInBuildSettings - 1 > SceneManager.GetActiveScene().buildIndex)
